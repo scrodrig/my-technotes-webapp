@@ -1,8 +1,9 @@
 {
-    "compilerOptions": {
-        "baseUrl": ".",
-        "paths": {
-            "src/*": ["./src/*"]
-        }
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["./src/*"]
     }
+  }
 }
