@@ -1,8 +1,39 @@
-# React + Vite
+# My techNotes web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Front-end project for my-technotes-api
 
-Currently, two official plugins are available:
+## Prerequisites
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Node.js (version 18.x.x)
+
+## Getting Started
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/scrodrig/my-technotes-webapp.git
+    ```
+
+2. Install the dependencies:
+
+    ```bash
+    cd my-technotes-webapp
+    npm install
+    ```
+
+3. Start the development server:
+
+    ```bash
+    npm run dev
+    ```
+
+4. Open your browser and navigate to `http://localhost:5173` to view the app.
+
+## Available Scripts
+
+In the project directory, you can run:
+
+- `npm run dev`: Starts the development server.
+- `npm run build`: Builds the app for production.
+- `npm run serve`: Serves the production build locally.
+
