@@ -25,4 +25,5 @@ const Welcome = () => {
 
     return content
 }
+
 export default Welcome
