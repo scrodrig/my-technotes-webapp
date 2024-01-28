@@ -1,5 +1,5 @@
-import DashFooter from 'src/components/DashFooter'
-import DashHeader from 'src/components/DashHeader'
+import DashFooter from './DashFooter'
+import DashHeader from './DashHeader'
 import { Outlet } from 'react-router-dom'
 
 const DashLayout = () => {
