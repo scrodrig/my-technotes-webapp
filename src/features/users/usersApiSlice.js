@@ -6,7 +6,7 @@ const userAdapter = createEntityAdapter({})
 
 const initialState = userAdapter.getInitialState()
 
-export const userApiSlice = apiSlice.injectEndpoints({
+export const usersApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getUsers: builder.query({
             query: () => '/users',
@@ -36,11 +36,11 @@ export const userApiSlice = apiSlice.injectEndpoints({
     }),
 })
 
-export const { useGetUsersQuery } = userApiSlice
+export const { useGetUsersQuery } = usersApiSlice
 
 //* returns the query result object
 
-export const selectUsersResult = userApiSlice.endpoints.getUsers.select()
+export const selectUsersResult = usersApiSlice.endpoints.getUsers.select()
 
 //* creates memoized selector that returns the result object
 const selectUsersData = createSelector(
