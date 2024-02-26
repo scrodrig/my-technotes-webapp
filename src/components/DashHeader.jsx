@@ -36,10 +36,7 @@ const DashHeader = () => {
     }
 
     const logoutButton = (
-        <button className="icon-button" title="Logout" onClick={()=>{
-            sendLogout()
-            navigate('/') //!This is happening since it is getting a 204 content instead of 200
-        }}>
+        <button className="icon-button" title="Logout" onClick={sendLogout}>
             <FontAwesomeIcon icon={faRightFromBracket} />
         </button>
     )
