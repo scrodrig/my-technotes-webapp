@@ -6,7 +6,7 @@ import { useGetUsersQuery } from 'src/features/users/usersApiSlice'
 import { useNavigate } from 'react-router-dom'
 
 const User = ({ userId }) => {
-    const { user } = useGetUsersQuery('noteList', {
+    const { user } = useGetUsersQuery('usersList', {
         selectFromResult: ({ data }) => ({
             user: data?.entities[userId],
         }),
