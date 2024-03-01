@@ -15,8 +15,10 @@ import { ROLES } from 'src/config/roles'
 import RequireAuth from 'src/features/auth/RequireAuth'
 import UsersList from 'src/features/users/UsersList'
 import Welcome from 'src/features/auth/Welcome'
+import useTitle from 'src/hooks/useTitle'
 
 function App() {
+    useTitle('My notes repairs')
     return (
         <Routes>
             <Route path="/" element={<Layout />}>
