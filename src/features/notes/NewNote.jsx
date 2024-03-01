@@ -3,9 +3,9 @@ import PulseLoader from 'react-spinners/PulseLoader'
 import { useGetUsersQuery } from 'src/features/users/usersApiSlice'
 
 const NewNote = () => {
-    const { users } = useGetUsersQuery('noteList', {
+    const { users } = useGetUsersQuery('usersList', {
         selectFromResult: ({ data }) => ({
-            user: data?.ids.map((id) => data?.entities[id]),
+            users: data?.ids.map((id) => data?.entities[id]),
         }),
     })
 
