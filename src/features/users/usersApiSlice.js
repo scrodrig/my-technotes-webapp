@@ -11,7 +11,7 @@ export const usersApiSlice = apiSlice.injectEndpoints({
         getUsers: builder.query({
             query: () => ({
                 url: '/users',
-                validateStaus: (response, result) => {
+                validateStatus: (response, result) => {
                     return response.status === 200 && !result.isError
                 },
             }),
