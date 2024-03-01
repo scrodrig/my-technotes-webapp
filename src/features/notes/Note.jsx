@@ -1,12 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
-import { selectNoteById } from './notesApiSlice'
+import { memo } from 'react'
+import { useGetNotesQuery } from 'src/features/notes/notesApiSlice'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
 const Note = ({ noteId }) => {
-    const note = useSelector((state) => selectNoteById(state, noteId))
+    const { note } = useGetNotesQuery('noteList', {
+        selectFromResult: ({ data }) => ({
+            note: data?.entities[noteId],
+        }),
+    })
 
     const navigate = useNavigate()
 
@@ -43,8 +47,7 @@ const Note = ({ noteId }) => {
             <td className="table__cell">
                 <button
                     className="icon-button table__button"
-                    onClick={handleEdit}
-                >
+                    onClick={handleEdit}>
                     <FontAwesomeIcon icon={faPenToSquare} />
                 </button>
             </td>
@@ -52,8 +55,10 @@ const Note = ({ noteId }) => {
     )
 }
 
+const memoizedNote = memo(Note)
+
 Note.propTypes = {
     noteId: PropTypes.string.isRequired,
 }
 
-export default Note
+export default memoizedNote
