@@ -12,10 +12,12 @@ const initialState = noteAdapter.getInitialState()
 export const notesApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getNotes: builder.query({
-            query: () => '/notes',
-            validateStaus: (response, result) => {
-                return response.status === 200 && !result.isError
-            },
+            query: () => ({
+                url: '/notes',
+                validateStaus: (response, result) => {
+                    return response.status === 200 && !result.isError
+                },
+            }),
             transformResponse: (responseData) => {
                 const loadedNotes = responseData.map((note) => {
                     note.id = note._id
@@ -84,7 +86,7 @@ export const selectNotesResult = notesApiSlice.endpoints.getNotes.select()
 //* creates memoized selector that returns the result object
 const selectNotesData = createSelector(
     selectNotesResult,
-    (notesResult) => notesResult.data, //? normalized state object with ids and entities
+    (notesResult) => notesResult.data //? normalized state object with ids and entities
 )
 
 //* getSelectors creates these selexctors and we rename them with aliases using destructuring
