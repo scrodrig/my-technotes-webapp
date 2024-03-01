@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 const EditUser = () => {
     const { id } = useParams()
 
-    const { user } = useGetUsersQuery('noteList', {
+    const { user } = useGetUsersQuery('usersList', {
         selectFromResult: ({ data }) => ({
             user: data?.entities[id],
         }),
