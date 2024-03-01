@@ -1,12 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
-import { selectUserById } from './usersApiSlice'
+import { memo } from 'react'
+import { useGetUsersQuery } from 'src/features/users/usersApiSlice'
 import { useNavigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
 
 const User = ({ userId }) => {
-    const user = useSelector((state) => selectUserById(state, userId))
+    const { user } = useGetUsersQuery('noteList', {
+        selectFromResult: ({ data }) => ({
+            user: data?.entities[userId],
+        }),
+    })
 
     const navigate = useNavigate()
 
@@ -27,8 +31,7 @@ const User = ({ userId }) => {
             <td className={`table__cell ${cellStatus}`}>
                 <button
                     className="icon-button table__button"
-                    onClick={handleEdit}
-                >
+                    onClick={handleEdit}>
                     <FontAwesomeIcon icon={faPenToSquare} />
                 </button>
             </td>
@@ -36,8 +39,10 @@ const User = ({ userId }) => {
     )
 }
 
+const memoizedUser = memo(User)
+
 User.propTypes = {
     userId: PropTypes.string.isRequired,
 }
 
-export default User
+export default memoizedUser
