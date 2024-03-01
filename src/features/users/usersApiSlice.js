@@ -9,10 +9,12 @@ const initialState = userAdapter.getInitialState()
 export const usersApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getUsers: builder.query({
-            query: () => '/users',
-            validateStaus: (response, result) => {
-                return response.status === 200 && !result.isError
-            },
+            query: () => ({
+                url: '/users',
+                validateStaus: (response, result) => {
+                    return response.status === 200 && !result.isError
+                },
+            }),
             transformResponse: (responseData) => {
                 const loadedUsers = responseData.map((user) => {
                     user.id = user._id
@@ -88,7 +90,7 @@ export const selectUsersResult = usersApiSlice.endpoints.getUsers.select()
 //* creates memoized selector that returns the result object
 const selectUsersData = createSelector(
     selectUsersResult,
-    (usersResult) => usersResult.data, //? normalized state object with ids and entities
+    (usersResult) => usersResult.data //? normalized state object with ids and entities
 )
 
 //* getSelectors creates these selexctors and we rename them with aliases using destructuring
